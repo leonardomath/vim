@@ -1,14 +1,24 @@
-" Execucao do gerenciador de pluguin
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'jiangmiao/auto-pairs'
+Plug 'zxqfl/tabnine-vim'
+Plug 'mattn/emmet-vim'
+Plug 'yegappan/grep'
+
+call plug#end()
 
 " Remapear o atalho do Emmet
 let g:user_emmet_leader_key=','
 
 " esquema de cores escuro
 " colorscheme industry
-colorscheme badwolf
+colorscheme monokai-bold
 
-" tamanho da indentacao
+"" tamanho da indentacao
 set tabstop=4
 
 " identifica o tipo de arquivo e indenta
@@ -45,3 +55,11 @@ set expandtab
 
 " backspace respeita indentacao
 set softtabstop=4
+
+set switchbuf+=usetab,newtab
+
+nnoremap <C-f> :Grep 
+nnoremap <C-p> :Files<CR>
+
+" Git grep
+command! -bang -nargs=* GGrep
